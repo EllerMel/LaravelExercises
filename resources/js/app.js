@@ -20,8 +20,13 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+Vue.component('curr-date', require('./components/curr-date.vue').default);
+Vue.component('curr-time', require('./components/curr-time.vue').default);
+Vue.component('count-down', require('./components/count-down.vue').default);
+Vue.component('mind-reader', require('./components/mind-reader.vue').default);
+Vue.config.devtools = true;
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -29,5 +34,5 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
 });

@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/clock', function() {
+    return view('clock');
+});
+
+Route::get('/countdown', function() {
+    return view('countdown');
+});
+
+Route::get('/mindreader', function() {
+    return view('mindreader');
+});
