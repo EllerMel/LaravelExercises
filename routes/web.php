@@ -27,6 +27,10 @@ Route::get('/TicTacToe', function() {
     return view('TicTacToe');
 });
 
+Route::get('/calculator', function() {
+    return view('calculator');
+});
+
 Route::get('/mindreader', function() {
     return view('mindreader');
 });

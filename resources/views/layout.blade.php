@@ -39,7 +39,10 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/TicTacToe">TicTacToe</a>
-        </li>             
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/calculator">Calculator</a>
+        </li>          
         <li class="nav-item">
           <a class="nav-link" href="/mindreader">MindReader</a>
         </li>        

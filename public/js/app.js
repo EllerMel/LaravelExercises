@@ -1754,6 +1754,117 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/calculator.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/calculator.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "calculator",
+  data: function data() {
+    return {
+      num1: [],
+      operator: "",
+      calDisplay: ""
+    };
+  },
+  methods: {
+    myClear: function myClear() {
+      this.num1 = [];
+      this.calDisplay = "";
+    },
+    myFunction: function myFunction(x) {
+      //collect numbers from buttons pressed and push them ito an array
+      this.calDisplay += x;
+      this.num1.push(x);
+      console.log(this.num1);
+    },
+    mySwitch: function mySwitch(y) {
+      //turn first array into number
+      this.number1 = Number(this.num1.join(''));
+      console.log(this.number1); //show if it is addition, subtraction...
+
+      this.operator = y;
+      console.log(this.operator);
+      this.myClear();
+      console.log(this.num1);
+    },
+    myEqual: function myEqual() {
+      //turn second array into number
+      this.number2 = Number(this.num1.join(''));
+      console.log(this.number2);
+      console.log(this.number1);
+      this.calDisplay = "";
+
+      switch (this.operator) {
+        case 'add':
+          var sum = this.number1 + this.number2;
+          break;
+
+        case 'subtract':
+          var sum = this.number1 - this.number2;
+          break;
+
+        case 'multiply':
+          var sum = this.number1 * this.number2;
+          break;
+
+        case 'divide':
+          var sum = this.number1 / this.number2;
+          break;
+
+        default:
+      }
+
+      console.log(sum);
+      this.calDisplay = sum;
+      this.operator = "";
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/count-down.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/count-down.vue?vue&type=script&lang=js& ***!
@@ -37919,6 +38030,267 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/calculator.vue?vue&type=template&id=c3d60ae6&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/calculator.vue?vue&type=template&id=c3d60ae6& ***!
+  \*************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("h1", [_vm._v("Calculator")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "Calculator", attrs: { id: "calc-contain" } }, [
+      _c("p", { staticClass: "text", attrs: { id: "calculator-display" } }, [
+        _vm._v(_vm._s(this.calDisplay))
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "calculator-keys" }, [
+        _c(
+          "button",
+          {
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.myClear()
+              }
+            }
+          },
+          [_vm._v(" C")]
+        ),
+        _vm._v(" "),
+        _c("button", { attrs: { type: "button", value: " " } }),
+        _vm._v(" "),
+        _c("button", { attrs: { type: "button", value: " " } }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.mySwitch("divide")
+              }
+            }
+          },
+          [_vm._v("/")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.myFunction(7)
+              }
+            }
+          },
+          [_vm._v("7")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.myFunction(8)
+              }
+            }
+          },
+          [_vm._v("8")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.myFunction(9)
+              }
+            }
+          },
+          [_vm._v("9")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.mySwitch("multiply")
+              }
+            }
+          },
+          [_vm._v("x")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.myFunction(4)
+              }
+            }
+          },
+          [_vm._v("4")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.myFunction(5)
+              }
+            }
+          },
+          [_vm._v("5")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.myFunction(6)
+              }
+            }
+          },
+          [_vm._v("6")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.mySwitch("subtract")
+              }
+            }
+          },
+          [_vm._v("-")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.myFunction(1)
+              }
+            }
+          },
+          [_vm._v("1")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.myFunction(2)
+              }
+            }
+          },
+          [_vm._v("2")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.myFunction(3)
+              }
+            }
+          },
+          [_vm._v("3")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.mySwitch("add")
+              }
+            }
+          },
+          [_vm._v("+")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.myFunction(0)
+              }
+            }
+          },
+          [_vm._v("0")]
+        ),
+        _vm._v(" "),
+        _c("button", { attrs: { type: "button", value: " " } }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.myFunction(".")
+              }
+            }
+          },
+          [_vm._v(".")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.myEqual()
+              }
+            }
+          },
+          [_vm._v("=")]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/count-down.vue?vue&type=template&id=1fc3d72b&":
 /*!*************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/count-down.vue?vue&type=template&id=1fc3d72b& ***!
@@ -50359,6 +50731,7 @@ Vue.component('curr-time', __webpack_require__(/*! ./components/curr-time.vue */
 Vue.component('count-down', __webpack_require__(/*! ./components/count-down.vue */ "./resources/js/components/count-down.vue")["default"]);
 Vue.component('tic-tac-toe', __webpack_require__(/*! ./components/tic-tac-toe.vue */ "./resources/js/components/tic-tac-toe.vue")["default"]);
 Vue.component('tile', __webpack_require__(/*! ./components/tile.vue */ "./resources/js/components/tile.vue")["default"]);
+Vue.component('calculator', __webpack_require__(/*! ./components/calculator.vue */ "./resources/js/components/calculator.vue")["default"]);
 Vue.component('mind-reader', __webpack_require__(/*! ./components/mind-reader.vue */ "./resources/js/components/mind-reader.vue")["default"]);
 Vue.config.devtools = true;
 /**
@@ -50428,6 +50801,75 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/calculator.vue":
+/*!************************************************!*\
+  !*** ./resources/js/components/calculator.vue ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _calculator_vue_vue_type_template_id_c3d60ae6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./calculator.vue?vue&type=template&id=c3d60ae6& */ "./resources/js/components/calculator.vue?vue&type=template&id=c3d60ae6&");
+/* harmony import */ var _calculator_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./calculator.vue?vue&type=script&lang=js& */ "./resources/js/components/calculator.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _calculator_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _calculator_vue_vue_type_template_id_c3d60ae6___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _calculator_vue_vue_type_template_id_c3d60ae6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/calculator.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/calculator.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/calculator.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_calculator_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./calculator.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/calculator.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_calculator_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/calculator.vue?vue&type=template&id=c3d60ae6&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/calculator.vue?vue&type=template&id=c3d60ae6& ***!
+  \*******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_calculator_vue_vue_type_template_id_c3d60ae6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./calculator.vue?vue&type=template&id=c3d60ae6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/calculator.vue?vue&type=template&id=c3d60ae6&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_calculator_vue_vue_type_template_id_c3d60ae6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_calculator_vue_vue_type_template_id_c3d60ae6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
