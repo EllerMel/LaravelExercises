@@ -38,6 +38,9 @@
           <a class="nav-link" href="/countdown">Countdown</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="/TicTacToe">TicTacToe</a>
+        </li>             
+        <li class="nav-item">
           <a class="nav-link" href="/mindreader">MindReader</a>
         </li>        
       </ul>

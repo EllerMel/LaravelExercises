@@ -1,5 +1,5 @@
 <template>
-      <div :key="currentPage">
+      <div :key="currentPage" id="padding">
         <h1>{{pages[currentPage].pageTitle}}</h1>
     
         <div v-show="showSymbols" v-html="symbols" class="large"></div>
@@ -14,7 +14,7 @@
     
         <button class="btn btn-info fas fa-arrow-right" v-on:click="goToNextPage()" :disabled="disableNext"></button>
         <button class="btn btn-info fas fa-redo-alt" onclick="location.reload()"></button>
-      </div>
+      </div>      
 </template>
 
 
@@ -125,12 +125,12 @@
 }
 </script>
 
-<style>
-    body{
-        margin-top: 15%;
-        margin-left: 15%;
-        margin-right: 15%;
-        margin-bottom: 15%;
+<style scoped>
+    .padding{
+        padding-top: 15%;
+        padding-left: 15%;
+        padding-right: 15%;
+        padding-bottom: 15%;
     }
 
     .large{

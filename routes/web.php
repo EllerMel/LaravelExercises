@@ -23,6 +23,10 @@ Route::get('/countdown', function() {
     return view('countdown');
 });
 
+Route::get('/TicTacToe', function() {
+    return view('TicTacToe');
+});
+
 Route::get('/mindreader', function() {
     return view('mindreader');
 });

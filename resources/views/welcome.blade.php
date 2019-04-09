@@ -25,6 +25,7 @@
                 <a href="/">Home</a>
                 <a href="/clock">Clock</a>
                 <a href="/countdown">Countdown</a>
+                <a href="/TicTacToe">TicTacToe</a>                
                 <a href="/mindreader">MindReader</a>                
             </div>
         </div>
