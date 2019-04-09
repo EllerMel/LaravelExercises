@@ -2008,7 +2008,7 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.currentPage);
 
       if (this.currentPage == 4) {
-        app.createSymbols();
+        this.createSymbols();
       }
 
       if (this.currentPage == 5) {
@@ -2018,7 +2018,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     createSymbols: function createSymbols() {
-      var arrSymbol = app.shuffleArray(["&", "^", "%", "$", "#", "@", "!", "*", "?"]);
+      var arrSymbol = this.shuffleArray(["&", "^", "%", "$", "#", "@", "!", "*", "?"]);
       var str = "";
       console.log(arrSymbol);
       var k = 0;

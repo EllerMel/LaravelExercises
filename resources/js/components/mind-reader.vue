@@ -77,7 +77,7 @@
             console.log(this.currentPage);
             
             if (this.currentPage == 4) {
-                app.createSymbols();
+                this.createSymbols();
             }
             if (this.currentPage == 5) {
                 this.disableNext = true;
@@ -86,7 +86,7 @@
             }
         },
         createSymbols() {
-            let arrSymbol = app.shuffleArray(["&", "^", "%", "$", "#", "@", "!", "*", "?"]);
+            let arrSymbol = this.shuffleArray(["&", "^", "%", "$", "#", "@", "!", "*", "?"]);
             var str = "";
             
             console.log(arrSymbol);
