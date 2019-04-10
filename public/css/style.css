@@ -48,3 +48,24 @@ html, body {
 .m-b-md {
     margin-bottom: 30px;
 }
+
+.center{
+    text-align: center;
+}
+
+.todo-notepad{
+    background-color: rgba(177, 133, 177, 0.637);
+}
+
+.todo{
+    min-height: 400px;
+}
+
+.todo-tasks{
+    padding-left: 25px;
+}
+
+.todo-btn{
+    width: 100px !important;
+    height: 60px;
+}

@@ -34,3 +34,5 @@ Route::get('/calculator', function() {
 Route::get('/mindreader', function() {
     return view('mindreader');
 });
+
+Route::resource('todos', 'todoController');

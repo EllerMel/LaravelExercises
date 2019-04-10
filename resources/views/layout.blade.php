@@ -45,7 +45,10 @@
         </li>          
         <li class="nav-item">
           <a class="nav-link" href="/mindreader">MindReader</a>
-        </li>        
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/todos">ToDos</a>
+        </li>    
       </ul>
     </nav>
 
