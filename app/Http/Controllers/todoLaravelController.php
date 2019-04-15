@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
+//This was the original todoController when it was built in Laravel. 
+//Saving here incase wanting to use in the future. Doesn't currently work since below naming has not been updated.
 use App\todo;
 use Illuminate\Http\Request;
-
 class todoController extends Controller
 {
     /**
@@ -14,19 +13,11 @@ class todoController extends Controller
      */
     public function index()
     {
-        return todo::orderBy('id', 'asc')->get();
+        $todos = todo::all();
+        $remaining = todo::where(['isComplete' => 0]);
+        
+        return view('todos.index', compact('todos', 'remaining'));
     }
-
-    public function completed()
-    {
-        return todo::where('isComplete', 1)->orderBy('id', 'asc')->get();    
-    }
-
-    public function remaining()
-    {
-        return todo::where('isComplete', 0)->orderBy('id', 'asc')->get();    
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -36,7 +27,6 @@ class todoController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -46,16 +36,12 @@ class todoController extends Controller
     public function store(Request $request)
     {
         $todo = new todo();
-
-        $todo->task = request('body');
+        $todo->task = request('task');
         $todo->isComplete = 0;
         $todo->isCleared = 0;        
-
         $todo->save();
-
-        return todo::orderBy('id', 'asc')->get();
+        return redirect('/todos');
     }
-
     /**
      * Display the specified resource.
      *
@@ -66,7 +52,6 @@ class todoController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -77,7 +62,6 @@ class todoController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -87,15 +71,8 @@ class todoController extends Controller
      */
     public function update(Request $request, todo $todo)
     {
-        $todo = todo::findOrFail(request('id'));
-
-        $todo->isComplete = !$todo->isComplete;      
-
-        $todo->save();
-
-        return todo::orderBy('id', 'asc')->get();
+        //
     }
-
     /**
      * Remove the specified resource from storage.
      *

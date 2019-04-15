@@ -28,7 +28,7 @@
                 <a href="/TicTacToe">TicTacToe</a> 
                 <a href="/calculator">Calculator</a>                
                 <a href="/mindreader">MindReader</a>
-                <a href="/todos">todos</a>             
+                <a href="/todoList">To Dos</a>             
             </div>
         </div>
     </div>

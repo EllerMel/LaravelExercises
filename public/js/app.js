@@ -2334,6 +2334,190 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/to-dos.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/to-dos.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "to-dos",
+  data: function data() {
+    return {
+      title: "To Do",
+      todos: [],
+      newTask: '',
+      status: 'All',
+      tasksLeft: 0
+    };
+  },
+  methods: {
+    addTask: function addTask() {
+      var _this = this;
+
+      axios.post('/new', {
+        body: this.newTask
+      }).then(function (resp) {
+        _this.filterAll();
+      });
+      this.newTask = '';
+    },
+    updateStatus: function updateStatus(id) {
+      var _this2 = this;
+
+      axios.post('/update', {
+        id: id
+      }).then(function (resp) {
+        _this2.filterAll();
+      });
+    },
+    uncheckAll: function uncheckAll(id) {
+      var _this3 = this;
+
+      for (var i = 0; i < this.todos.length; i++) {
+        if (this.todos[i].isComplete == true) {
+          this.todos[i].isComplete = false;
+          axios.post("/update", {
+            id: this.todos[i].id
+          }).then(function (resp) {
+            _this3.filterAll();
+          });
+        }
+      }
+    },
+    checkAll: function checkAll(id) {
+      var _this4 = this;
+
+      for (var i = 0; i < this.todos.length; i++) {
+        if (this.todos[i].isComplete == false) {
+          this.todos[i].isComplete = true;
+          axios.post("/update", {
+            id: this.todos[i].id
+          }).then(function (resp) {
+            _this4.filterAll();
+          });
+        }
+      }
+    },
+    filterAll: function filterAll() {
+      var _this5 = this;
+
+      axios.get('/all').then(function (resp) {
+        _this5.todos = resp.data; //url: /all to see all
+
+        _this5.status = 'All';
+      });
+    },
+    filterCompleted: function filterCompleted() {
+      var _this6 = this;
+
+      axios.get('/completed').then(function (resp) {
+        _this6.todos = resp.data; //url: /completed to see completed
+
+        _this6.status = 'Completed';
+      });
+    },
+    filterRemaining: function filterRemaining() {
+      var _this7 = this;
+
+      axios.get('/remaining').then(function (resp) {
+        _this7.todos = resp.data; //url: /remaining to see remaining
+
+        _this7.status = 'Remaining';
+      });
+    }
+  },
+  mounted: function mounted() {
+    var _this8 = this;
+
+    axios.get('/all').then(function (resp) {
+      _this8.todos = resp.data;
+    }); //Count & display remaining tasks To Do on load
+
+    axios.get('/remaining').then(function (resp) {
+      _this8.tasksLeft = resp.data.length;
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
 /*!*****************************************************!*\
   !*** ./node_modules/bootstrap/dist/js/bootstrap.js ***!
@@ -38444,6 +38628,275 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/to-dos.vue?vue&type=template&id=a1e88bfe&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/to-dos.vue?vue&type=template&id=a1e88bfe& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row todo" }, [
+      _c("div", { staticClass: "col" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col todo-notepad" }, [
+        _c("h1", [_vm._v(_vm._s(_vm.title))]),
+        _vm._v(" "),
+        _c("h2", { staticClass: "center" }, [_vm._v(_vm._s(_vm.status))]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.newTask,
+              expression: "newTask"
+            }
+          ],
+          attrs: {
+            type: "text",
+            id: "input",
+            placeholder: "what needs to be done?",
+            size: "35"
+          },
+          domProps: { value: _vm.newTask },
+          on: {
+            keyup: function($event) {
+              if (
+                !$event.type.indexOf("key") &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              return _vm.addTask($event)
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.newTask = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c(
+          "ul",
+          _vm._l(_vm.todos, function(todo) {
+            return _c("li", { key: todo.id }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: todo.isComplete,
+                    expression: "todo.isComplete"
+                  }
+                ],
+                staticClass: "toggle",
+                attrs: { type: "checkbox", id: '"checkbox-" + todo.id' },
+                domProps: {
+                  value: todo.id,
+                  checked: Array.isArray(todo.isComplete)
+                    ? _vm._i(todo.isComplete, todo.id) > -1
+                    : todo.isComplete
+                },
+                on: {
+                  change: [
+                    function($event) {
+                      var $$a = todo.isComplete,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = todo.id,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(todo, "isComplete", $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              todo,
+                              "isComplete",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
+                        }
+                      } else {
+                        _vm.$set(todo, "isComplete", $$c)
+                      }
+                    },
+                    function($event) {
+                      return _vm.updateStatus(todo.id)
+                    }
+                  ]
+                }
+              }),
+              _vm._v(" "),
+              _c("label", { attrs: { for: '"checkbox-" + todo.id' } }, [
+                _vm._v(_vm._s(todo.task))
+              ])
+            ])
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" })
+    ]),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" }, [
+        _c("h4", [_vm._v("Items left to do: " + _vm._s(_vm.tasksLeft) + " ")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" })
+    ]),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "col center" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-outline-dark todo-btn",
+            on: {
+              click: function($event) {
+                return _vm.filterAll()
+              }
+            }
+          },
+          [_vm._v("All")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col center" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-outline-dark todo-btn",
+            on: {
+              click: function($event) {
+                return _vm.filterCompleted()
+              }
+            }
+          },
+          [_vm._v("Completed")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col center" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-outline-dark todo-btn",
+            on: {
+              click: function($event) {
+                return _vm.filterRemaining()
+              }
+            }
+          },
+          [_vm._v("To Do")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" })
+    ]),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("div", { staticClass: "col center" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-outline-dark todo-btn",
+            on: {
+              click: function($event) {
+                return _vm.uncheckAll()
+              }
+            }
+          },
+          [_vm._v("Uncheck All")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col center" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-outline-dark todo-btn",
+            on: {
+              click: function($event) {
+                return _vm.checkAll()
+              }
+            }
+          },
+          [_vm._v("Complete All")]
+        )
+      ]),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" })
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-1" }, [_c("p", [_vm._v("View: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-1" }, [
+      _c("p", [_vm._v("Actions: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col center" }, [
+      _c("button", { staticClass: "btn btn-outline-dark todo-btn" }, [
+        _vm._v("Remove Completed")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
 /*!********************************************************************!*\
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -50613,6 +51066,7 @@ Vue.component('tic-tac-toe', __webpack_require__(/*! ./components/tic-tac-toe.vu
 Vue.component('tile', __webpack_require__(/*! ./components/tile.vue */ "./resources/js/components/tile.vue")["default"]);
 Vue.component('calculator', __webpack_require__(/*! ./components/calculator.vue */ "./resources/js/components/calculator.vue")["default"]);
 Vue.component('calculatorButton', __webpack_require__(/*! ./components/calculatorButton.vue */ "./resources/js/components/calculatorButton.vue")["default"]);
+Vue.component('to-dos', __webpack_require__(/*! ./components/to-dos.vue */ "./resources/js/components/to-dos.vue")["default"]);
 Vue.component('mind-reader', __webpack_require__(/*! ./components/mind-reader.vue */ "./resources/js/components/mind-reader.vue")["default"]);
 Vue.config.devtools = true;
 /**
@@ -51268,6 +51722,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_tile_vue_vue_type_template_id_223e5e79___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_tile_vue_vue_type_template_id_223e5e79___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/to-dos.vue":
+/*!********************************************!*\
+  !*** ./resources/js/components/to-dos.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _to_dos_vue_vue_type_template_id_a1e88bfe___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./to-dos.vue?vue&type=template&id=a1e88bfe& */ "./resources/js/components/to-dos.vue?vue&type=template&id=a1e88bfe&");
+/* harmony import */ var _to_dos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./to-dos.vue?vue&type=script&lang=js& */ "./resources/js/components/to-dos.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _to_dos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _to_dos_vue_vue_type_template_id_a1e88bfe___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _to_dos_vue_vue_type_template_id_a1e88bfe___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/to-dos.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/to-dos.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/to-dos.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_to_dos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./to-dos.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/to-dos.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_to_dos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/to-dos.vue?vue&type=template&id=a1e88bfe&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/to-dos.vue?vue&type=template&id=a1e88bfe& ***!
+  \***************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_to_dos_vue_vue_type_template_id_a1e88bfe___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./to-dos.vue?vue&type=template&id=a1e88bfe& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/to-dos.vue?vue&type=template&id=a1e88bfe&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_to_dos_vue_vue_type_template_id_a1e88bfe___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_to_dos_vue_vue_type_template_id_a1e88bfe___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

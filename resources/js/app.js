@@ -34,6 +34,8 @@ Vue.component('tile', require('./components/tile.vue').default);
 Vue.component('calculator', require('./components/calculator.vue').default);
 Vue.component('calculatorButton', require('./components/calculatorButton.vue').default);
 
+Vue.component('to-dos', require('./components/to-dos.vue').default);
+
 Vue.component('mind-reader', require('./components/mind-reader.vue').default);
 Vue.config.devtools = true;
 /**

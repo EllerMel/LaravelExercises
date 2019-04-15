@@ -35,4 +35,14 @@ Route::get('/mindreader', function() {
     return view('mindreader');
 });
 
-Route::resource('todos', 'todoController');
+Route::get('/todoList', function() {
+    return view('todoList');
+});
+
+Route::get('all', 'todoController@index');
+Route::get('completed', 'todoController@completed');
+Route::get('remaining', 'todoController@remaining');
+Route::post('new', 'todoController@store');
+Route::post('update', 'todoController@update');
+
+Route::resource('todoList/todos', 'todoController');

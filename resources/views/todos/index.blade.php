@@ -21,12 +21,12 @@
                             <div>{{ $todo->task }}</div>
                         </div>
                     @endforeach
+
+                    <to-do><to-do>
             </div>
             <div class="col"></div>
         </div>
         </form>
-
-
 
         <br>
         <div class="row">

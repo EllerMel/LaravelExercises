@@ -47,7 +47,7 @@
           <a class="nav-link" href="/mindreader">MindReader</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/todos">ToDos</a>
+          <a class="nav-link" href="/todoList">ToDos</a>
         </li>    
       </ul>
     </nav>
