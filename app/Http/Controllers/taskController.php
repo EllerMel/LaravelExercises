@@ -1,10 +1,11 @@
 <?php
+
 namespace App\Http\Controllers;
-//This was the original todoController when it was built in Laravel. 
-//Saving here incase wanting to use in the future. Doesn't currently work since below naming has not been updated.
-use App\todo;
+
+use App\task;
 use Illuminate\Http\Request;
-class todoController extends Controller
+
+class taskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,11 +14,12 @@ class todoController extends Controller
      */
     public function index()
     {
-        $todos = todo::all();
-        $remaining = todo::where(['isComplete' => 0]);
+        $tasks = task::all();
+        $remaining = task::where(['isComplete' => 0]);
         
-        return view('todos.index', compact('todos', 'remaining'));
+        return view('tasks.index', compact('tasks', 'remaining'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -27,6 +29,7 @@ class todoController extends Controller
     {
         //
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -35,51 +38,55 @@ class todoController extends Controller
      */
     public function store(Request $request)
     {
-        $todo = new todo();
-        $todo->task = request('task');
-        $todo->isComplete = 0;
-        $todo->isCleared = 0;        
-        $todo->save();
-        return redirect('/todos');
+        $task = new task();
+        $task->ListItem = request('ListItem');
+        $task->isComplete = 0;
+        $task->isCleared = 0;        
+        $task->save();
+        return redirect('/tasks');
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  \App\todo  $todo
+     * @param  \App\task  $task
      * @return \Illuminate\Http\Response
      */
-    public function show(todo $todo)
+    public function show(task $task)
     {
         //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\todo  $todo
+     * @param  \App\task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(todo $todo)
+    public function edit(task $task)
     {
         //
     }
+
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\todo  $todo
+     * @param  \App\task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, todo $todo)
+    public function update(Request $request, task $task)
     {
         //
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\todo  $todo
+     * @param  \App\task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(todo $todo)
+    public function destroy(task $task)
     {
         //
     }

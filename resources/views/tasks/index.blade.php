@@ -2,27 +2,23 @@
 
 @section('content')
     <div class="container">
-        <form method="POST" action="/todos">
+        <form method="POST" action="/tasks">
             {{ csrf_field() }}
 
         <div class="row todo">
             <div class="col"></div>
                 <div class="col todo-notepad">
-                    <h1>ToDo</h1>
-                    <input type="text" class="form-control" name="task" placeholder="what needs to be done?" @keyup.enter="submit" size="35">
+                    <h1>Tasks</h1>
+                    <input type="text" class="form-control" name="ListItem" placeholder="what needs to be done?" @keyup.enter="submit" size="35">
                     <br>
-                    @foreach($todos as $todo)
+                    @foreach($tasks as $task)
                         <div class="todo-tasks">
-                            <input class="form-check-input" type="checkbox" value="{{ $todo->isComplete }}" id="{{ $todo->id }}"
-                            @if($todo->isComplete)
-                                    checked="checked"
-                                @endif
-                            >       
-                            <div>{{ $todo->task }}</div>
+                            <input class="form-check-input" type="checkbox" value="{{ $task->isComplete }}" id="{{ $task->id }}"
+                            @if($task->isComplete) checked="checked" @endif >       
+                            <div>{{ $task->ListItem }}</div>
                         </div>
                     @endforeach
 
-                    <to-do><to-do>
             </div>
             <div class="col"></div>
         </div>
@@ -74,6 +70,11 @@
         <div class="col"></div>
       </div>
 
-
+    <br>
+    <br>
+    <br>
+    <div>
+    <p>The above list was handled in Laravel. To see it handled in Vue, click <a href="/todoList">HERE</a>.</p>
+    </div>
     </div>
 @endsection

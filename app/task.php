@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class todoLaravel extends Model
+class task extends Model
 {
     //
 }

@@ -47,3 +47,5 @@ Route::post('update', 'todoController@update');
 Route::post('clear', 'todoController@clear');
 
 Route::resource('todoList/todos', 'todoController');
+
+Route::resource('tasks', 'taskController');
