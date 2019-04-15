@@ -2475,43 +2475,56 @@ __webpack_require__.r(__webpack_exports__);
         }
       }
     },
-    filterAll: function filterAll() {
+    clearCompleted: function clearCompleted() {
       var _this5 = this;
 
-      axios.get('/all').then(function (resp) {
-        _this5.todos = resp.data; //url: /all to see all
+      for (var i = 0; i < this.todos.length; i++) {
+        if (this.todos[i].isComplete == true) {
+          axios.post("/clear", {
+            id: this.todos[i].id
+          }).then(function (resp) {
+            _this5.filterAll();
+          });
+        }
+      }
+    },
+    filterAll: function filterAll() {
+      var _this6 = this;
 
-        _this5.status = 'All';
+      axios.get('/all').then(function (resp) {
+        _this6.todos = resp.data; //url: /all to see all
+
+        _this6.status = 'All';
       });
     },
     filterCompleted: function filterCompleted() {
-      var _this6 = this;
+      var _this7 = this;
 
       axios.get('/completed').then(function (resp) {
-        _this6.todos = resp.data; //url: /completed to see completed
+        _this7.todos = resp.data; //url: /completed to see completed
 
-        _this6.status = 'Completed';
+        _this7.status = 'Completed';
       });
     },
     filterRemaining: function filterRemaining() {
-      var _this7 = this;
+      var _this8 = this;
 
       axios.get('/remaining').then(function (resp) {
-        _this7.todos = resp.data; //url: /remaining to see remaining
+        _this8.todos = resp.data; //url: /remaining to see remaining
 
-        _this7.status = 'Remaining';
+        _this8.status = 'Remaining';
       });
     }
   },
   mounted: function mounted() {
-    var _this8 = this;
+    var _this9 = this;
 
     axios.get('/all').then(function (resp) {
-      _this8.todos = resp.data;
+      _this9.todos = resp.data;
     }); //Count & display remaining tasks To Do on load
 
     axios.get('/remaining').then(function (resp) {
-      _this8.tasksLeft = resp.data.length;
+      _this9.tasksLeft = resp.data.length;
     });
   }
 });
@@ -38859,7 +38872,20 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(2),
+      _c("div", { staticClass: "col center" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-outline-dark todo-btn",
+            on: {
+              click: function($event) {
+                return _vm.clearCompleted()
+              }
+            }
+          },
+          [_vm._v("Remove Completed")]
+        )
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "col" })
     ])
@@ -38878,16 +38904,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-sm-1" }, [
       _c("p", [_vm._v("Actions: ")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col center" }, [
-      _c("button", { staticClass: "btn btn-outline-dark todo-btn" }, [
-        _vm._v("Remove Completed")
-      ])
     ])
   }
 ]

@@ -44,5 +44,6 @@ Route::get('completed', 'todoController@completed');
 Route::get('remaining', 'todoController@remaining');
 Route::post('new', 'todoController@store');
 Route::post('update', 'todoController@update');
+Route::post('clear', 'todoController@clear');
 
 Route::resource('todoList/todos', 'todoController');

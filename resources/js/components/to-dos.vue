@@ -64,7 +64,7 @@
           <button class="btn btn-outline-dark todo-btn" @click="checkAll()">Complete All</button>
         </div>
         <div class="col center">
-          <button class="btn btn-outline-dark todo-btn" >Remove Completed</button>
+          <button class="btn btn-outline-dark todo-btn" @click="clearCompleted()">Remove Completed</button>
         </div>
         <div class="col"></div>
       </div>
@@ -113,6 +113,13 @@ export default {
 
             axios.post("/update", { id: this.todos[i].id } ).then(resp => {  this.filterAll(); });
           }
+      }
+    },
+    clearCompleted() {
+      for(var i = 0; i < this.todos.length; i++){
+        if(this.todos[i].isComplete == true) {
+          axios.post("/clear", { id: this.todos[i].id } ).then(resp => {  this.filterAll(); });
+        }
       }
     },
       filterAll(){

@@ -14,12 +14,12 @@ class todoController extends Controller
      */
     public function index()
     {
-        return todo::orderBy('id', 'asc')->get();
+        return todo::where('isCleared', 0)->orderBy('id', 'asc')->get();
     }
 
     public function completed()
     {
-        return todo::where('isComplete', 1)->orderBy('id', 'asc')->get();    
+        return todo::where('isComplete', 1)->where('isCleared', 0)->orderBy('id', 'asc')->get();    
     }
 
     public function remaining()
@@ -90,6 +90,17 @@ class todoController extends Controller
         $todo = todo::findOrFail(request('id'));
 
         $todo->isComplete = !$todo->isComplete;      
+
+        $todo->save();
+
+        return todo::orderBy('id', 'asc')->get();
+    }
+
+    public function clear(Request $request, todo $todo)
+    {
+        $todo = todo::findOrFail(request('id'));
+
+        $todo->isCleared = true;      
 
         $todo->save();
 
