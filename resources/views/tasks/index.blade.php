@@ -13,7 +13,7 @@
                     <br>
                     @foreach($tasks as $task)
                         <div class="todo-tasks">
-                            <input class="form-check-input" type="checkbox" value="{{ $task->isComplete }}" id="{{ $task->id }}"
+                            <input class="form-check-input" type="checkbox" value="{{ $task->isComplete }}" id="{{ $task->id }}" disabled
                             @if($task->isComplete) checked="checked" @endif >       
                             <div>{{ $task->ListItem }}</div>
                         </div>
@@ -34,7 +34,7 @@
       </div>
 
       <br>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col"></div>
         <div class="col-sm-1">
           <p>View: </p>
@@ -68,13 +68,13 @@
           <button class="btn btn-outline-dark todo-btn" @click="clearCompleted">Remove Completed</button>
         </div>
         <div class="col"></div>
-      </div>
+      </div> -->
 
     <br>
     <br>
     <br>
     <div>
-    <p>The above list was handled in Laravel. To see it handled in Vue, click <a href="/todoList">HERE</a>.</p>
+    <p>The todo list was intitally started in in Laravel. To see the finished list handled in Vue, click <a href="/todoList">HERE</a>.</p>
     </div>
     </div>
 @endsection
