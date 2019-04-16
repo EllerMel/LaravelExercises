@@ -2657,20 +2657,32 @@ __webpack_require__.r(__webpack_exports__);
       error: "",
       error2: "",
       city: "",
+      temp: "",
       kTemp: "",
+      fTemp: "",
+      cTemp: "",
       kelvin: "",
       fahrenheit: "",
+      fahrenheitDisplay: "",
       celsius: "",
       condition: "",
-      weatherImg: ""
+      weatherImg: "",
+      weatherStockImg: true,
+      weatherInfoDiv: false,
+      infoToWatch: ""
     };
   },
   methods: {
     setData: function setData() {
       console.log(this.info);
+      this.city = this.getCity();
+      this.condition = this.getCondition();
+      this.kTemp = this.getK();
+      this.convertTemp();
+      this.getTemperatureImg();
+      console.log(this.city, this.condition, this.kTemp);
     },
     getZipCode: function getZipCode() {
-      console.log('HERE');
       console.log(this.zipcode);
 
       if (this.zipcode !== '') {
@@ -2678,9 +2690,42 @@ __webpack_require__.r(__webpack_exports__);
         axios.get('https://cors-anywhere.herokuapp.com/' + 'http://api.openweathermap.org/data/2.5/weather?zip=' + this.zipcode + ',us&APPID=725c230d9f8717d24b757396af6fdb56').then(function (response) {
           self.info = response.data;
           self.setData();
-        });
+        }); //hide stock image
+
+        this.weatherStockImg = false; //show info div
+
+        this.weatherInfoDiv = true;
       } else {
         this.error = 'Please enter in a zip code';
+        this.weatherStockImg = true;
+        this.weatherInfo = false;
+      }
+    },
+    getCity: function getCity() {
+      return this.info.name;
+    },
+    getCondition: function getCondition() {
+      return this.info.weather[0].description;
+    },
+    getK: function getK() {
+      return this.info.main.temp;
+    },
+    convertTemp: function convertTemp() {
+      this.kelvin = Math.round(this.kTemp) + "°" + " K";
+      this.fahrenheit = Math.round(9 / 5 * (parseInt(this.kTemp) - 273) + 32);
+      this.fahrenheitDisplay = this.fahrenheit + "°" + " F";
+      this.celsius = Math.round(parseInt(this.kTemp) - 273.15) + "°" + " C";
+    },
+    getTemperatureImg: function getTemperatureImg() {
+      this.temp = parseInt(this.fahrenheit);
+      console.log("Temp", this.temp);
+
+      if (this.temp <= 32) {
+        this.weatherImg = "/img/ColdBinx.png";
+      } else if (this.temp > 32 && this.temp < 65) {
+        this.weatherImg = "/img/SpringBinx.png";
+      } else if (this.temp >= 65) {
+        this.weatherImg = "/img/SummerBinx.png";
       }
     }
   }
@@ -39088,8 +39133,16 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "container center" }, [
       _c("img", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: this.weatherStockImg,
+            expression: "this.weatherStockImg"
+          }
+        ],
         staticClass: "mainImg",
-        attrs: { id: "mainImg", src: "img/weather.jpg" }
+        attrs: { src: "img/weather.jpg" }
       }),
       _vm._v(" "),
       _c("h1", [_vm._v(" Weather App")]),
@@ -39098,8 +39151,25 @@ var render = function() {
       _vm._v(" "),
       _c("div", [
         _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.zipcode,
+              expression: "zipcode"
+            }
+          ],
           staticClass: "box",
-          attrs: { id: "zipcode", name: "zipcode", type: "text", value: "" }
+          attrs: { id: "zipcode", name: "zipcode", type: "text" },
+          domProps: { value: _vm.zipcode },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.zipcode = $event.target.value
+            }
+          }
         }),
         _vm._v(" "),
         _c(
@@ -39116,36 +39186,29 @@ var render = function() {
     _vm._v(" "),
     _c("br"),
     _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _vm._m(1)
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
+    _c(
       "div",
-      { staticStyle: { display: "none" }, attrs: { id: "WeatherStuff" } },
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: this.weatherInfoDiv,
+            expression: "this.weatherInfoDiv"
+          }
+        ],
+        staticStyle: { display: "none" },
+        attrs: { id: "WeatherStuff" }
+      },
       [
         _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "col center weather-purple" }, [
-              _c("strong", [_vm._v("City")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col" })
-          ]),
+          _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col" }),
             _vm._v(" "),
             _c("div", { staticClass: "col center" }, [
-              _c("label", { staticClass: "center", attrs: { id: "city" } })
+              _c("label", { staticClass: "center" }, [_vm._v(_vm._s(_vm.city))])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col" })
@@ -39155,15 +39218,7 @@ var staticRenderFns = [
         _c("br"),
         _vm._v(" "),
         _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "col center weather-purple" }, [
-              _c("strong", [_vm._v("Temperature")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col" })
-          ]),
+          _vm._m(1),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col" }),
@@ -39171,15 +39226,21 @@ var staticRenderFns = [
             _c("div", { staticClass: "col" }),
             _vm._v(" "),
             _c("div", { staticClass: "col center" }, [
-              _c("label", { attrs: { id: "kTemp" } })
+              _c("label", { attrs: { id: "kTemp" } }, [
+                _vm._v(_vm._s(_vm.kelvin))
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col center" }, [
-              _c("label", { attrs: { id: "fTemp" } })
+              _c("label", { attrs: { id: "fTemp" } }, [
+                _vm._v(_vm._s(_vm.fahrenheitDisplay))
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col center" }, [
-              _c("label", { attrs: { id: "cTemp" } })
+              _c("label", { attrs: { id: "cTemp" } }, [
+                _vm._v(_vm._s(_vm.celsius))
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col" }),
@@ -39191,21 +39252,13 @@ var staticRenderFns = [
         _c("br"),
         _vm._v(" "),
         _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "col center weather-purple" }, [
-              _c("strong", [_vm._v("Condition")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col" })
-          ]),
+          _vm._m(2),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col" }),
             _vm._v(" "),
             _c("div", { staticClass: "col center" }, [
-              _c("label", { attrs: { id: "condition" } })
+              _c("label", [_vm._v(_vm._s(_vm.condition))])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col" })
@@ -39221,7 +39274,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "col center" }, [
               _c("img", {
                 staticClass: "weather-Img",
-                attrs: { id: "weatherImg", src: "/img/SummerBinx.png" }
+                attrs: { id: "weatherImg", src: _vm.weatherImg }
               })
             ]),
             _vm._v(" "),
@@ -39229,7 +39282,53 @@ var staticRenderFns = [
           ])
         ])
       ]
-    )
+    ),
+    _vm._v(" "),
+    _vm._m(3)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col center weather-purple" }, [
+        _c("strong", [_vm._v("City")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col center weather-purple" }, [
+        _c("strong", [_vm._v("Temperature")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col center weather-purple" }, [
+        _c("strong", [_vm._v("Condition")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" })
+    ])
   },
   function() {
     var _vm = this
