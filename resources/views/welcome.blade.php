@@ -28,7 +28,8 @@
                 <a href="/TicTacToe">TicTacToe</a> 
                 <a href="/calculator">Calculator</a>                
                 <a href="/mindreader">MindReader</a>
-                <a href="/todoList">To Dos</a>             
+                <a href="/todoList">To Dos</a>
+                <a href="/weather">Weather App</a>           
             </div>
         </div>
     </div>

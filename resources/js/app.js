@@ -37,6 +37,8 @@ Vue.component('calculatorButton', require('./components/calculatorButton.vue').d
 Vue.component('to-dos', require('./components/to-dos.vue').default);
 
 Vue.component('mind-reader', require('./components/mind-reader.vue').default);
+
+Vue.component('weather-app', require('./components/weather-app.vue').default);
 Vue.config.devtools = true;
 /**
  * Next, we will create a fresh Vue application instance and attach it to

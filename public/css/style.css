@@ -69,3 +69,17 @@ html, body {
     width: 100px !important;
     height: 60px;
 }
+
+.weather-error{
+    color: red;
+}
+
+.weather-purple{
+    background-color: rgb(178, 127, 230);
+}
+
+.weather-Img{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}

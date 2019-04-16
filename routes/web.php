@@ -35,6 +35,12 @@ Route::get('/mindreader', function() {
     return view('mindreader');
 });
 
+Route::get('/weather', function() {
+    return view('weather');
+});
+
+Route::resource('weather-app', 'WeatherController');
+
 Route::get('/todoList', function() {
     return view('todoList');
 });
