@@ -2437,6 +2437,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.filterAll();
       });
       this.newTask = '';
+      this.tasksLeft++;
     },
     updateStatus: function updateStatus(id) {
       var _this2 = this;

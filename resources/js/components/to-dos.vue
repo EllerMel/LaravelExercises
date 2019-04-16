@@ -89,6 +89,7 @@ export default {
           this.filterAll();
         })
         this.newTask = '';
+        this.tasksLeft++;
     },
       updateStatus(id) {
         axios.post('/update', {id: id}).then(resp=>{
