@@ -11,9 +11,9 @@
 
           <ul>
             <li v-for="todo in todos" :key="todo.id">
-              <input class='toggle' type='checkbox' @change='updateStatus(todo.id)' id='"checkbox-" + todo.id'
-                :value='todo.id' v-model='todo.isComplete'>
-              <label for='"checkbox-" + todo.id'>{{ todo.task }}</label>
+              <input class='toggle' type='checkbox' @change='updateStatus(todo.id)' :id='"checkbox-" + todo.id'
+                :value='todo.id' v-model='todo.isComplete' name="POST">
+              <label :for='"checkbox-" + todo.id'>{{ todo.task }}</label>
             </li>
           </ul>
 
@@ -87,14 +87,21 @@ export default {
       addTask() {
         axios.post('/new', {body: this.newTask}).then(resp=>{
           this.filterAll();
-        })
+        });
         this.newTask = '';
-        this.tasksLeft++;
     },
       updateStatus(id) {
         axios.post('/update', {id: id}).then(resp=>{
           this.filterAll();
-        })
+        });
+      },
+      updateTasksLeft(){
+        this.tasksLeft = 0;
+          for (var i = 0; i < this.todos.length; i++) {
+            if (this.todos[i].isComplete == false && this.todos[i].isCleared == false  ) {
+              this.tasksLeft++;
+            }
+          }
     },
       uncheckAll(id) {
         for (var i = 0; i < this.todos.length; i++) {
@@ -102,9 +109,10 @@ export default {
 
             this.todos[i].isComplete = false;
 
-            axios.post("/update", { id: this.todos[i].id } ).then(resp => {  this.filterAll(); });
+            axios.post("/update", { id: this.todos[i].id } ).then(resp => { this.filterAll(); });
           }
-        }
+        };
+        this.filterAll();
       },
       checkAll(id) {
         for(var i = 0; i < this.todos.length; i++){
@@ -112,14 +120,15 @@ export default {
 
             this.todos[i].isComplete = true;
 
-            axios.post("/update", { id: this.todos[i].id } ).then(resp => {  this.filterAll(); });
+            axios.post("/update", { id: this.todos[i].id } ).then(resp => { this.filterAll(); });
           }
-      }
+        };
+        this.filterAll();
     },
     clearCompleted() {
       for(var i = 0; i < this.todos.length; i++){
         if(this.todos[i].isComplete == true) {
-          axios.post("/clear", { id: this.todos[i].id } ).then(resp => {  this.filterAll(); });
+          axios.post("/clear", { id: this.todos[i].id } ).then(resp => { this.filterAll(); });
         }
       }
     },
@@ -128,30 +137,28 @@ export default {
         this.todos = resp.data;
         //url: /all to see all
         this.status = 'All';
-        })
+        this.updateTasksLeft();
+        });
       },
       filterCompleted(){
         axios.get('/completed').then(resp => {
         this.todos = resp.data;
         //url: /completed to see completed
         this.status = 'Completed';
-        })
+        });
       },
       filterRemaining(){
         axios.get('/remaining').then(resp => {
         this.todos = resp.data;
         //url: /remaining to see remaining
         this.status = 'Remaining';
-        })
+        });
       }
   },
     mounted() {
       axios.get('/all').then(resp => {
         this.todos = resp.data;
-      })
-      //Count & display remaining tasks To Do on load
-      axios.get('/remaining').then(resp => {
-        this.tasksLeft = resp.data.length;
+        this.updateTasksLeft();
       })
     }
 }

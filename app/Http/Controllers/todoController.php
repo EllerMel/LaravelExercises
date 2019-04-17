@@ -93,7 +93,7 @@ class todoController extends Controller
 
         $todo->save();
 
-        return todo::orderBy('id', 'asc')->get();
+        return todo::where('isCleared', 0)->orderBy('id', 'asc')->get();
     }
 
     public function clear(Request $request, todo $todo)

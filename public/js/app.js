@@ -2437,7 +2437,6 @@ __webpack_require__.r(__webpack_exports__);
         _this.filterAll();
       });
       this.newTask = '';
-      this.tasksLeft++;
     },
     updateStatus: function updateStatus(id) {
       var _this2 = this;
@@ -2447,6 +2446,15 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (resp) {
         _this2.filterAll();
       });
+    },
+    updateTasksLeft: function updateTasksLeft() {
+      this.tasksLeft = 0;
+
+      for (var i = 0; i < this.todos.length; i++) {
+        if (this.todos[i].isComplete == false && this.todos[i].isCleared == false) {
+          this.tasksLeft++;
+        }
+      }
     },
     uncheckAll: function uncheckAll(id) {
       var _this3 = this;
@@ -2461,6 +2469,9 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       }
+
+      ;
+      this.filterAll();
     },
     checkAll: function checkAll(id) {
       var _this4 = this;
@@ -2475,6 +2486,9 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       }
+
+      ;
+      this.filterAll();
     },
     clearCompleted: function clearCompleted() {
       var _this5 = this;
@@ -2496,6 +2510,8 @@ __webpack_require__.r(__webpack_exports__);
         _this6.todos = resp.data; //url: /all to see all
 
         _this6.status = 'All';
+
+        _this6.updateTasksLeft();
       });
     },
     filterCompleted: function filterCompleted() {
@@ -2522,10 +2538,8 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get('/all').then(function (resp) {
       _this9.todos = resp.data;
-    }); //Count & display remaining tasks To Do on load
 
-    axios.get('/remaining').then(function (resp) {
-      _this9.tasksLeft = resp.data.length;
+      _this9.updateTasksLeft();
     });
   }
 });
@@ -38921,7 +38935,11 @@ var render = function() {
                   }
                 ],
                 staticClass: "toggle",
-                attrs: { type: "checkbox", id: '"checkbox-" + todo.id' },
+                attrs: {
+                  type: "checkbox",
+                  id: "checkbox-" + todo.id,
+                  name: "POST"
+                },
                 domProps: {
                   value: todo.id,
                   checked: Array.isArray(todo.isComplete)
@@ -38959,7 +38977,7 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
-              _c("label", { attrs: { for: '"checkbox-" + todo.id' } }, [
+              _c("label", { attrs: { for: "checkbox-" + todo.id } }, [
                 _vm._v(_vm._s(todo.task))
               ])
             ])
