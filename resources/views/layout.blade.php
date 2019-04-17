@@ -47,11 +47,11 @@
           <a class="nav-link" href="/mindreader">MindReader</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/todoList">ToDos</a>
-        </li> 
-        <li class="nav-item">
           <a class="nav-link" href="/weather">Weather App</a>
-        </li>     
+        </li>   
+        <li class="nav-item">
+          <a class="nav-link" href="/todoList">ToDos</a>
+        </li>   
       </ul>
     </nav>
 

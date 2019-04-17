@@ -17,19 +17,30 @@
         @endif
 
         <div class="content">
-            <div class="title m-b-md">
-                Laravel MAE
+            <div class="links">
+                <a href="https://ellermel.github.io/" Target="_blank"> My Website</a>
+                <a href="https://github.com/EllerMel" Target="_blank"> My GitHub</a>
+                <a href="https://www.linkedin.com/in/melissaeller248/" Target="_blank"> My LinkedIn</a>                
             </div>
 
+            <br>
+
+            <div class="title m-b-md">
+                MAE 
+                <br>
+                Laravel Portfolio
+            </div>
+
+            <br>
+
             <div class="links">
-                <a href="/">Home</a>
                 <a href="/clock">Clock</a>
                 <a href="/countdown">Countdown</a>
-                <a href="/TicTacToe">TicTacToe</a> 
-                <a href="/calculator">Calculator</a>                
+                <a href="/TicTacToe">TicTacToe</a>
+                <a href="/calculator">Calculator</a>        
                 <a href="/mindreader">MindReader</a>
+                <a href="/weather">Weather App</a>
                 <a href="/todoList">To Dos</a>
-                <a href="/weather">Weather App</a>           
             </div>
         </div>
     </div>
