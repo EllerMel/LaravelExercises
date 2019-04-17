@@ -46,7 +46,11 @@ html, body {
 }
 
 .m-b-md {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+}
+
+.m-t-md {
+    margin-top: 75px;
 }
 
 .center{
@@ -83,3 +87,64 @@ html, body {
     margin-left: auto;
     margin-right: auto;
 }
+
+.restaurant-main {
+    padding: 30px;
+    font-size: 40px;
+    text-align: center;
+    color: White;
+    font-family: cursive;
+    background: black;
+  }
+
+.restaurant-headers{
+    font-family: cursive;
+  }
+
+.restaurant-group{
+    font-family: cursive;
+    font-size: 30px;
+    color: rgb(95, 94, 94);
+}
+
+  /* Create two unequal columns that floats next to each other */
+  /* Right column */
+  .restaurant-rightcolumn {
+    float: left;
+    width: 75%;
+  }
+
+  /* Left column */
+  .restaurant-leftcolumn {   
+    float: left;
+    width: 25%;
+    padding-left: 20px;
+  }
+
+   /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+   @media screen and (max-width: 800px) {
+    .restaurant-leftcolumn, .restaurant-rightcolumn {   
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  .restaurant-miniImg {
+    width: 100%;
+    padding: 20px;
+  }
+
+/* Add a card effect for articles */
+  .card {
+    background-color: white;
+    padding: 5%;
+    margin-top: 20px;
+    }
+    
+  .card-body {
+        padding: 0 !important;
+    }
+    
+  .card-width {
+    width: 90%;
+    }

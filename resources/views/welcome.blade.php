@@ -17,10 +17,12 @@
         @endif
 
         <div class="content">
-            <div class="links">
+            <br>
+            <br>
+            <div class="links m-t-md">
                 <a href="https://ellermel.github.io/" Target="_blank"> My Website</a>
-                <a href="https://github.com/EllerMel" Target="_blank"> My GitHub</a>
-                <a href="https://www.linkedin.com/in/melissaeller248/" Target="_blank"> My LinkedIn</a>                
+                <a href="https://github.com/EllerMel" Target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/melissaeller248/" Target="_blank">LinkedIn</a>                
             </div>
 
             <br>
@@ -37,10 +39,12 @@
                 <a href="/clock">Clock</a>
                 <a href="/countdown">Countdown</a>
                 <a href="/TicTacToe">TicTacToe</a>
-                <a href="/calculator">Calculator</a>        
+                <a href="/calculator">Calculator</a>
+                <br>     
                 <a href="/mindreader">MindReader</a>
                 <a href="/weather">Weather App</a>
                 <a href="/todoList">To Dos</a>
+                <a href="/restaurant">Restaurant</a>
             </div>
         </div>
     </div>

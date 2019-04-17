@@ -51,7 +51,10 @@
         </li>   
         <li class="nav-item">
           <a class="nav-link" href="/todoList">ToDos</a>
-        </li>   
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/restaurant">Restaurant</a>
+        </li>  
       </ul>
     </nav>
 

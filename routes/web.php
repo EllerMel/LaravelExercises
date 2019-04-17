@@ -45,6 +45,10 @@ Route::get('/todoList', function() {
     return view('todoList');
 });
 
+Route::get('/restaurant', function () {
+    return view('restaurant');
+});
+
 Route::get('all', 'todoController@index');
 Route::get('completed', 'todoController@completed');
 Route::get('remaining', 'todoController@remaining');

@@ -39,6 +39,11 @@ Vue.component('to-dos', require('./components/to-dos.vue').default);
 Vue.component('mind-reader', require('./components/mind-reader.vue').default);
 
 Vue.component('weather-app', require('./components/weather-app.vue').default);
+
+Vue.component('food-card', require('./components/food-card.vue').default);
+Vue.component('accordion', require('./components/accordion.vue').default);
+Vue.component('accordionPanel', require('./components/accordion-panel.vue').default);
+
 Vue.config.devtools = true;
 /**
  * Next, we will create a fresh Vue application instance and attach it to
