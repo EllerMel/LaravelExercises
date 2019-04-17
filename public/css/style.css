@@ -1,0 +1,150 @@
+html, body {
+    background-color: #ffffff;
+    color: #636b6f;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+}
+
+.full-height {
+    height: 50vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 80px;
+}
+
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.m-b-md {
+    margin-bottom: 25px;
+}
+
+.m-t-md {
+    margin-top: 75px;
+}
+
+.center{
+    text-align: center;
+}
+
+.todo-notepad{
+    background-color: rgba(177, 133, 177, 0.637);
+}
+
+.todo{
+    min-height: 400px;
+}
+
+.todo-tasks{
+    padding-left: 25px;
+}
+
+.todo-btn{
+    width: 100px !important;
+    height: 60px;
+}
+
+.weather-error{
+    color: red;
+}
+
+.weather-purple{
+    background-color: rgb(178, 127, 230);
+}
+
+.weather-Img{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.restaurant-main {
+    padding: 30px;
+    font-size: 40px;
+    text-align: center;
+    color: White;
+    font-family: cursive;
+    background: black;
+  }
+
+.restaurant-headers{
+    font-family: cursive;
+  }
+
+.restaurant-group{
+    font-family: cursive;
+    font-size: 30px;
+    color: rgb(95, 94, 94);
+}
+
+  /* Create two unequal columns that floats next to each other */
+  /* Right column */
+  .restaurant-rightcolumn {
+    float: left;
+    width: 75%;
+  }
+
+  /* Left column */
+  .restaurant-leftcolumn {   
+    float: left;
+    width: 25%;
+    padding-left: 20px;
+  }
+
+   /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+   @media screen and (max-width: 800px) {
+    .restaurant-leftcolumn, .restaurant-rightcolumn {   
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  .restaurant-miniImg {
+    width: 100%;
+    padding: 20px;
+  }
+
+/* Add a card effect for articles */
+  .card {
+    background-color: white;
+    padding: 5%;
+    margin-top: 20px;
+    }
+    
+  .card-body {
+        padding: 0 !important;
+    }
+    
+  .card-width {
+    width: 90%;
+    }
