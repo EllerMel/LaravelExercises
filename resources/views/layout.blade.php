@@ -24,7 +24,7 @@
   <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <!-- Brand/logo -->
-    <a class="navbar-brand" href="#">Exercises</a>
+    <!-- <a class="navbar-brand" href="#">Exercises</a> -->
     
       <!-- Links -->
       <ul class="navbar-nav">
@@ -47,7 +47,7 @@
           <a class="nav-link" href="/mindreader">MindReader</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/weather">Weather App</a>
+          <a class="nav-link" href="/weather">Weather</a>
         </li>   
         <li class="nav-item">
           <a class="nav-link" href="/todoList">ToDos</a>
