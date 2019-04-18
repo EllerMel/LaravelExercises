@@ -25,15 +25,13 @@
 
   </head>
   <body>
+    
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <!-- Brand/logo -->
-    <!-- <a class="navbar-brand" href="#">Exercises</a> -->
+    <a class="navbar-brand" href="/">Home</a>
     
       <!-- Links -->
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" href="/clock">Clock</a>
         </li>

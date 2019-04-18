@@ -42,8 +42,8 @@
                 <a href="/calculator">Calculator</a>
                 <br>     
                 <a href="/mindreader">MindReader</a>
-                <a href="/weather">Weather App</a>
-                <a href="/todoList">To Dos</a>
+                <a href="/weather">Weather</a>
+                <a href="/todoList">ToDo</a>
                 <a href="/restaurant">Restaurant</a>
             </div>
         </div>
