@@ -16,6 +16,9 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
+    <!-- Generate a URL for an asset using HTTPS -->
+    <link rel="stylesheet" href="{{ secure_asset('css/style.css') }}">
+
     <title>@yield('title', 'Laravel Exercises')</title>
 
     {{ csrf_field() }}
