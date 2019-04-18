@@ -88,6 +88,12 @@ html, body {
     margin-right: auto;
 }
 
+.weather-Icon{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .restaurant-main {
     padding: 30px;
     font-size: 40px;

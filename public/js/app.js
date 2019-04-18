@@ -2864,13 +2864,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "weather-app",
   data: function data() {
     return {
       zipcode: "",
       error: "",
-      error2: "",
       city: "",
       temp: "",
       kTemp: "",
@@ -2882,6 +2892,7 @@ __webpack_require__.r(__webpack_exports__);
       celsius: "",
       condition: "",
       weatherImg: "",
+      weatherIcon: "",
       weatherStockImg: true,
       weatherInfoDiv: false,
       infoToWatch: ""
@@ -2895,6 +2906,7 @@ __webpack_require__.r(__webpack_exports__);
       this.kTemp = this.getK();
       this.convertTemp();
       this.getTemperatureImg();
+      this.weatherIcon = this.getIcon();
       console.log(this.city, this.condition, this.kTemp);
     },
     getZipCode: function getZipCode() {
@@ -2909,12 +2921,17 @@ __webpack_require__.r(__webpack_exports__);
 
         this.weatherStockImg = false; //show info div
 
-        this.weatherInfoDiv = true;
+        this.weatherInfoDiv = true; //hide error
+
+        this.error = "";
       } else {
         this.error = 'Please enter in a zip code';
         this.weatherStockImg = true;
         this.weatherInfo = false;
       }
+    },
+    getIcon: function getIcon() {
+      return "http://openweathermap.org/img/w/" + this.info.weather[0].icon + ".png";
     },
     getCity: function getCity() {
       return this.info.name;
@@ -39572,6 +39589,15 @@ var render = function() {
           attrs: { id: "zipcode", name: "zipcode", type: "text" },
           domProps: { value: _vm.zipcode },
           on: {
+            keyup: function($event) {
+              if (
+                !$event.type.indexOf("key") &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              return _vm.getZipCode($event)
+            },
             input: function($event) {
               if ($event.target.composing) {
                 return
@@ -39610,6 +39636,21 @@ var render = function() {
         attrs: { id: "WeatherStuff" }
       },
       [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "col center" }, [
+              _c("img", {
+                staticClass: "weather-Icon",
+                attrs: { id: "weatherIcon", src: _vm.weatherIcon }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col" })
+          ])
+        ]),
+        _vm._v(" "),
         _c("div", { staticClass: "container" }, [
           _vm._m(0),
           _vm._v(" "),

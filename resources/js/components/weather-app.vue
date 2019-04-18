@@ -5,7 +5,7 @@
             <h1> Weather App</h1>
             <br>
             <div>
-                <input class="box" id="zipcode" name="zipcode" type="text" v-model="zipcode">
+                <input class="box" id="zipcode" name="zipcode" type="text" @keyup.enter="getZipCode" v-model="zipcode">
                 <button class="btn btn-info" @click="getZipCode" >Get Weather</button>
                 <br>
                 <p class="weather-error">{{error}}</p>
@@ -14,6 +14,17 @@
         <br>
 
         <div id="WeatherStuff" v-show="this.weatherInfoDiv" style="display:none">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                </div>
+                <div class="col center">
+                    <img class="weather-Icon" id="weatherIcon" :src="weatherIcon">
+                </div>
+                    <div class="col">
+                </div>
+                </div>
+            </div>
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -114,7 +125,6 @@ export default {
     return {
         zipcode: "",
         error: "",
-        error2: "",
         city: "",
         temp: "",
         kTemp: "",
@@ -126,6 +136,7 @@ export default {
         celsius: "",
         condition: "",
         weatherImg: "",
+        weatherIcon: "",
         weatherStockImg: true,
         weatherInfoDiv: false,
         infoToWatch: ""
@@ -141,6 +152,7 @@ export default {
 
         this.convertTemp();
         this.getTemperatureImg();
+        this.weatherIcon = this.getIcon();
 
       console.log(this.city, this.condition, this.kTemp);
     },
@@ -160,6 +172,8 @@ export default {
         this.weatherStockImg = false;
         //show info div
         this.weatherInfoDiv = true;
+        //hide error
+        this.error = "";
         }  
         else {
             this.error = 'Please enter in a zip code';
@@ -167,6 +181,9 @@ export default {
             this.weatherInfo = false;
         }
       },
+    getIcon: function(){
+        return "http://openweathermap.org/img/w/" + this.info.weather[0].icon + ".png";
+    },  
     getCity: function(){
         return this.info.name;
     },
